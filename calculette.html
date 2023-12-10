@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <label>Entrer les deux nombres</label>
+        <input type="text" id="number1" />
+        <input type="text" id="number2" />
+        <button type="submit">Valider</button>
+        <p id="error"></p>
+    </form>
+</body>
+<script>
+    const form = document.getElementById("form");
+    const error = document.getElementById("error");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var number1 = document.getElementById("number1").value;
+        var number2 = document.getElementById("number2").value;
+
+        if (number1 === "" && number2 === "") {
+            error.textContent=('Veuillez remplir le formulaire');
+        } else if (number1 <= 0 && number2 <= 0) {
+            error.textContent = "Le nombre doit être positif";
+        } else {
+            var sum = parseInt(number1) + parseInt(number2);
+            document.getElementById("error").textContent = "La somme est " + sum;
+        }
+    });
+</script>
+</html>
